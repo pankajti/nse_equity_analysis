@@ -21,7 +21,6 @@ def update_split_ratio():
         print('{} rows updated for {}'.format(hist_rec, row[1]))
     session.commit()
 
-update_split_ratio()
 
 
 

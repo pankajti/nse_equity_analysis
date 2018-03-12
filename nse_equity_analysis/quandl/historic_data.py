@@ -46,4 +46,3 @@ def load_historic_data():
             print('error '+str(e))
 
 
-load_historic_data()

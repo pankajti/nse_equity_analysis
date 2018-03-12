@@ -46,5 +46,4 @@ def create_schema():
     print('schema created ...')
 
 
-create_schema()
 
