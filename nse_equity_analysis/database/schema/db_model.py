@@ -20,6 +20,8 @@ class NseHistoricData(Base):
     last=Column(Numeric)
     total_trade_qty=Column(Numeric)
     turnover=Column(Numeric)
+    split_ratio=Column(Numeric)
+
 
 
 class EquityCode(Base):

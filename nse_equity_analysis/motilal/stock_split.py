@@ -26,6 +26,6 @@ def populate_db_from_page_data():
 
 browser=webdriver.Firefox()
 response=browser.get(config.motilal_split_url)
-time.sleep(100)
+time.sleep(30)
 populate_db_from_page_data()
 
