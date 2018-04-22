@@ -4,7 +4,6 @@ from nse_equity_analysis.database.connection import db_connection
 import pandas as pd
 
 query='select nhd.split_ratio*nhd.close as close_spr, nhd.*  from nse_historic_data nhd where equity_id ={} order by trade_date'
-
 records=pd.read_sql(query.format(1430),db_connection.get_connection())
 records.set_index('trade_date', inplace=True)
 base_close_data=records.loc[:,['close_spr']]

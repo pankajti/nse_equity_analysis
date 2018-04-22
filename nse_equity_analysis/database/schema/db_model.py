@@ -40,6 +40,15 @@ class EquitySplit(Base):
     face_value_before=Column(Numeric)
     face_value_after=Column(Numeric)
 
+class AccessTockens(Base):
+    __tablename__='access_tockens'
+    id=Column(Integer,primary_key=True)
+    provider=Column(String)
+    tocken_type=Column(String)
+    tocken=Column(String)
+
+
+
 def create_schema():
 
     Base.metadata.create_all(db_connection.get_dbengine())

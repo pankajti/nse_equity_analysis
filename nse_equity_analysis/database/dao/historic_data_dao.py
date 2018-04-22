@@ -1,5 +1,3 @@
-import matplotlib
-import matplotlib.pyplot as plt
 from sqlalchemy.sql import text
 from nse_equity_analysis.database.schema.db_model import EquityCode, NseHistoricData
 import pandas as pd

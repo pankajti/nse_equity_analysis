@@ -7,14 +7,14 @@ from nse_equity_analysis.database.dao import historic_data_dao
 db_model.create_schema()
 
 # download quandl data
-historic_data.load_historic_data()
+#historic_data.load_historic_data()
 
 #download split data from motilal
 
-stock_split.populate_db_from_page_data()
+#stock_split.populate_db_from_page_data()
 
 # stock update split data
 
-historic_data_dao.update_split_ratio()
+#historic_data_dao.update_split_ratio()
 
 # find correlation
