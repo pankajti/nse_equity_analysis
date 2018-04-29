@@ -13,6 +13,6 @@ def add_tocken(provider, tocken_text , tocken_type):
 create_schema()
 
 
-add_tocken('aaa','aaa','aaa')
+add_tocken('quandl','','api_key')
 
 

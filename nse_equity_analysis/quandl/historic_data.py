@@ -6,14 +6,14 @@ from zipfile import ZipFile
 
 from nse_equity_analysis.database.dao import GenericDao
 from nse_equity_analysis.database.schema.db_model import EquityCode, NseHistoricData
-from nse_equity_analysis.config import config
+from nse_equity_analysis.config import api_config
 import time
 import datetime as dt
 def load_historic_data():
-    api_key = config.quandl_api_key
+    api_key = api_config.quandl_api_key
     st_Time = time.time()
     quandl.ApiConfig.api_key = api_key
-    codes_url = config.quandl_codes_url
+    codes_url = api_config.quandl_codes_url
     codes_data = requests.get(codes_url)
     zipped_file = ZipFile(BytesIO(codes_data.content))
     file = zipped_file.open('NSE-datasets-codes.csv')
@@ -21,6 +21,7 @@ def load_historic_data():
 
 
     for record in records:
+        print('loading data for {}'.format(record))
         try:
             str_records = record.decode('utf-8').split(',')
             equity_code=EquityCode()
@@ -28,7 +29,7 @@ def load_historic_data():
             equity_code.name=str_records[1]
             GenericDao.insert_record(equity_code)
             equity_id=equity_code.id
-            data=quandl.get(str_records[0])
+            data=quandl.get(str_records[0],start_date='2018-03-02')
             for data_idx,data_rec in data.iterrows():
                 hist_data=NseHistoricData ()
                 hist_data.close=data_rec['Close']
@@ -46,3 +47,4 @@ def load_historic_data():
             print('error '+str(e))
 
 
+load_historic_data()

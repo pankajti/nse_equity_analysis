@@ -7,7 +7,7 @@ from nse_equity_analysis.database.dao import historic_data_dao
 db_model.create_schema()
 
 # download quandl data
-#historic_data.load_historic_data()
+historic_data.load_historic_data()
 
 #download split data from motilal
 
