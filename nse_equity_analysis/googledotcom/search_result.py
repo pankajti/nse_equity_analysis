@@ -55,7 +55,7 @@ def api_search():
 
 query='Yes Bank'
 num_results=10
-toi_search(query, num_results )
+moneycontrol_search(query, num_results )
 
 
 

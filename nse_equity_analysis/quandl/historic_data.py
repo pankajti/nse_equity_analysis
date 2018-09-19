@@ -27,9 +27,10 @@ def load_historic_data():
             equity_code=EquityCode()
             equity_code.code=str_records[0]
             equity_code.name=str_records[1]
+
+            data=quandl.get(str_records[0])
             GenericDao.insert_record(equity_code)
-            equity_id=equity_code.id
-            data=quandl.get(str_records[0],start_date='2018-03-02')
+            equity_id = equity_code.id
             for data_idx,data_rec in data.iterrows():
                 hist_data=NseHistoricData ()
                 hist_data.close=data_rec['Close']
@@ -47,4 +48,3 @@ def load_historic_data():
             print('error '+str(e))
 
 
-load_historic_data()

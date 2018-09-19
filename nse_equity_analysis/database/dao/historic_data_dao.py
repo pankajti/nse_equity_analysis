@@ -10,14 +10,16 @@ def update_split_ratio():
     stmt = text('select * from stock_split_detail')
     result = db_connection.get_connection().execute(stmt)
     data = pd.DataFrame(result.fetchall())
+    data=data[data[5]!=0]
     data['split_ratio'] = data[4] / data[5]
     data['split_ratio'] = data['split_ratio'].apply(lambda s: s if s < 1 else 1 / s)
     for idx, row in data.iterrows():
         hist_rec = session.query(NseHistoricData).filter(NseHistoricData.equity_id == row[0],
                                                          NseHistoricData.trade_date < row[3]). \
             update({NseHistoricData.split_ratio: NseHistoricData.split_ratio * row['split_ratio']})
+        session.commit()
+
         print('{} rows updated for {}'.format(hist_rec, row[1]))
-    session.commit()
 
 
 

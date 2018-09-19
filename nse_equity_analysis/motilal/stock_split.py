@@ -8,6 +8,8 @@ import time
 def populate_db_from_page_data():
     soup = BeautifulSoup(browser.page_source,"html.parser")
     for row in soup.find_all('tr'):
+        print('new raw')
+
         columns=row.find_all('td')
         equity_split = EquitySplit()
         if len(columns)!=0:
