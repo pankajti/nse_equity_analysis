@@ -1,11 +1,6 @@
-import os
 import pandas as pd
 import datetime as dt
-import json
-from nse_equity_analysis.database.dao.ref.equity_dao import *
 DATE_FMT = lambda x: '{}-{}-{}'.format(x[0:4], x[4:6], x[6:8])
-from nse_equity_analysis.database.schema.equity_db_model import *
-from psycopg2.extras import DateRange
 import requests
 
 
